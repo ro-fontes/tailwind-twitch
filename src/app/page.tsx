@@ -5,6 +5,8 @@ import {
   MessageSquare,
   Twitch,
   MoreVertical,
+  ArrowLeft,
+  ArrowRight,
   Search,
   ArrowLeftFromLine,
   ArrowUpDown,
@@ -78,7 +80,7 @@ export default function Home() {
         </div>
       </header>
       <div className="flex flex-1">
-        <aside className="w-60 bg-neutral-800 h-full flex-col p-3">
+        <aside className="w-64 bg-neutral-800 h-full flex-col p-3">
           <div className="font-bold text-lg flex justify-between items-center mb-3">
             Para voce
             <button>
@@ -97,7 +99,28 @@ export default function Home() {
             </button>
           </div>
         </aside>
-        <main>main</main>
+        <main className="w-full h-80">
+          <div className="flex mt-3 items-center justify-between p-6">
+            <a
+              href="#"
+              className="flex items-center p-2 w-9 h-9 rounded hover:bg-zinc-400/20"
+            >
+              <ArrowLeft />
+            </a>
+            <Image
+              src="/gaules.jpg"
+              width={560}
+              height={320}
+              alt="Imagem do Gaules fazendo live"
+            />
+            <a
+              href="#"
+              className="flex items-center p-2 w-9 h-9 rounded hover:bg-zinc-400/20"
+            >
+              <ArrowRight />
+            </a>
+          </div>
+        </main>
       </div>
     </div>
   );
