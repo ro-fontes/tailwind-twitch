@@ -1,4 +1,4 @@
-import { TwitchIcon, MoreVertical } from "lucide-react";
+import { TwitchIcon, MoreVertical, ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -23,7 +23,19 @@ export default function Home() {
       </header>
       <div className="flex">
         <aside className="w-60">aside</aside>
-        <main>main</main>
+        <main className="w-full h-80">
+            <div className="flex mt-3 items-center justify-between p-6">
+              <a href="#" className="flex items-center p-2 w-9 h-9 rounded hover:bg-zinc-400/20" >
+                 <ArrowLeft/>
+              </a>
+              <Image src="/gaules.jpg" width={560} height={320} alt="Imagem do Gaules fazendo live"/>
+              <a href="#"className="flex items-center p-2 w-9 h-9 rounded hover:bg-zinc-400/20">
+                
+                <ArrowRight/>
+              </a>
+
+            </div>
+          </main>
       </div>
     </div>
   );
