@@ -1,7 +1,10 @@
-import React, { createContext, useState } from "react";
+"use client";
+import AuthTwitchApiService from "@/services/AuthTwitchApiService";
+import twitchApiService from "@/services/TwitchApiService";
+import React, { createContext, useContext, useState } from "react";
 import { useQuery } from "react-query";
 
-interface IResponseData {
+interface IStreamerData {
   id: string;
   user_id: string;
   user_login: string;
@@ -19,10 +22,12 @@ interface IResponseData {
   is_mature: boolean;
 }
 
+type TResponseData = { data: IStreamerData[] };
+
 interface IStreamersContext {
-  currentStreamers: IResponseData | undefined;
+  currentStreamers: IStreamerData[] | undefined;
   setCurrentStreamers: React.Dispatch<
-    React.SetStateAction<IResponseData | undefined>
+    React.SetStateAction<IStreamerData[] | undefined>
   >;
 }
 
@@ -34,12 +39,27 @@ export const StreamersProvider = ({
   children: React.ReactNode;
 }) => {
   const [currentStreamers, setCurrentStreamers] = useState<
-    IResponseData | undefined
+    IStreamerData[] | undefined
   >();
 
-  //   useQuery(`streamers`, async () => {
-  //     const response = await
-  //   });
+  useQuery(`streamers`, async () => {
+    if (!currentStreamers) {
+      const response = await AuthTwitchApiService.post(
+        "token?client_secret=rr713b2850ctj1lzqdlx3tc1d9t6b4&client_id=lfyxb4l3ef82jzljbg1cc535reyv7i&grant_type=client_credentials"
+      );
+      console.log(response);
+      const { data }: { data: TResponseData } = await twitchApiService.get(
+        "/helix/streams",
+        {
+          headers: {
+            Authorization: `Bearer ${response.data.access_token}`,
+          },
+        }
+      );
+      console.log(data.data);
+      setCurrentStreamers(data.data);
+    }
+  });
   return (
     <StreamersContext.Provider
       value={{
@@ -50,4 +70,14 @@ export const StreamersProvider = ({
       {children}
     </StreamersContext.Provider>
   );
+};
+
+export const useStreamers = () => {
+  const context = useContext(StreamersContext);
+
+  if (!context) {
+    throw new Error("useStreamers must be used within a StreamerProvider");
+  }
+
+  return context;
 };
