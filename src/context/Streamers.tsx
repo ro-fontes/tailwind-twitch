@@ -1,7 +1,7 @@
 "use client";
 import AuthTwitchApiService from "@/services/AuthTwitchApiService";
 import twitchApiService from "@/services/TwitchApiService";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 interface IStreamerData {
@@ -29,6 +29,7 @@ interface IStreamersContext {
   setCurrentStreamers: React.Dispatch<
     React.SetStateAction<IStreamerData[] | undefined>
   >;
+  token: string;
 }
 
 const StreamersContext = createContext({} as IStreamersContext);
@@ -41,6 +42,7 @@ export const StreamersProvider = ({
   const [currentStreamers, setCurrentStreamers] = useState<
     IStreamerData[] | undefined
   >();
+  const [token, setToken] = useState<string>("");
 
   useQuery(`streamers`, async () => {
     if (!currentStreamers) {
@@ -48,6 +50,8 @@ export const StreamersProvider = ({
         "token?client_secret=rr713b2850ctj1lzqdlx3tc1d9t6b4&client_id=lfyxb4l3ef82jzljbg1cc535reyv7i&grant_type=client_credentials"
       );
       console.log(response);
+      setToken(response.data.access_token);
+      localStorage.setItem("token", response.data.access_token);
       const { data }: { data: TResponseData } = await twitchApiService.get(
         "/helix/streams",
         {
@@ -62,10 +66,7 @@ export const StreamersProvider = ({
   });
   return (
     <StreamersContext.Provider
-      value={{
-        currentStreamers,
-        setCurrentStreamers,
-      }}
+      value={{ token, currentStreamers, setCurrentStreamers }}
     >
       {children}
     </StreamersContext.Provider>

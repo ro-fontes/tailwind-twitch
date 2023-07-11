@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        robbert: ["var(--font-Robbert-Regular)"],
+        inter: ["var(--font-inter)"],
       },
     },
   },
