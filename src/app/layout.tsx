@@ -33,7 +33,9 @@ export default function RootLayout({
     <html lang="en">
       <QueryClientProvider client={queryClient}>
         <StreamersProvider>
-          <body className={`${inter.variable} text-zinc-50 font-inter`}>
+          <body
+            className={`${inter.variable} bg-neutral-900 text-zinc-50 font-inter`}
+          >
             {children}
           </body>
         </StreamersProvider>

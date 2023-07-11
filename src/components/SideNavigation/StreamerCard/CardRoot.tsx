@@ -6,7 +6,7 @@ interface CardRootProps {
 
 export function CardRoot({ children }: CardRootProps) {
   return (
-    <div className="flex justify-between items-center hover:bg-slate-600">
+    <div className="flex p-1 pl-3 justify-between items-center hover:bg-zinc-600">
       {children}
     </div>
   );

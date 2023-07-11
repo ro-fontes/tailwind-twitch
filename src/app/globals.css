@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.simplebar-scrollbar::before {
+  background: gray !important;
+}
