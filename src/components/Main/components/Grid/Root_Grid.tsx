@@ -5,5 +5,5 @@ interface IRootGrid {
 }
 
 export function RootGrid({ children }: IRootGrid) {
-  return <div className="">{children}</div>;
+  return <div className="h-[18.75rem] w-[18.75rem">{children}</div>;
 }

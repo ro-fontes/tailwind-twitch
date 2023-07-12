@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import SimpleBarReact from "simplebar-react";
-import "simplebar-react/dist/simplebar.min.css";
+// import "simplebar-react/dist/simplebar.min.css";
 import { HeaderComponent } from "./Header";
 import { SideNavigation } from "./SideNavigation";
 
@@ -18,8 +18,8 @@ export const Layout = ({ children, hasScroll }: ILayoutProps): JSX.Element => {
         <SideNavigation />
         {hasScroll ? (
           <SimpleBarReact
-            className="max-h-full max-w-full"
-            style={{ maxHeight: "100%", width: "100%" }}
+            className="w-full"
+            //style={{ height: "100%", width: "100%" }}
           >
             <main>{children}</main>
           </SimpleBarReact>

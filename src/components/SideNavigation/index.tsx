@@ -8,11 +8,8 @@ export const SideNavigation = (): JSX.Element => {
   const { currentStreamers } = useStreamers();
 
   return (
-    <aside className="w-60 h-full bg-neutral-800 flex-col flex gap-3">
-      <SimpleBarReact
-        color="#f1f1f1"
-        style={{ maxHeight: "100%", paddingRight: 8 }}
-      >
+    <aside className="w-[17.3rem] h-full bg-neutral-800 flex-col flex gap-3">
+      <SimpleBarReact className="max-h-full pr-2">
         <div className="p-3 gap-2 flex flex-col">
           <div className="font-bold text-lg flex justify-between items-center">
             Para voce

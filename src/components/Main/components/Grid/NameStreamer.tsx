@@ -3,9 +3,5 @@ interface INameStreamerProps {
 }
 
 export function nameStreamerLayout({ name }: INameStreamerProps) {
-  return (
-    <div className="">
-      <p className="flex text-xs text-zinc-400">{name}</p>
-    </div>
-  );
+  return <h3 className="flex text-xs text-zinc-400 cursor-pointer">{name}</h3>;
 }

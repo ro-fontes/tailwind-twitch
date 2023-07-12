@@ -10,6 +10,10 @@ module.exports = {
       fontFamily: {
         inter: ["var(--font-inter)"],
       },
+      screens: {
+        "3xl": "1600px",
+        "4xl": "1770px",
+      },
     },
   },
   plugins: [],

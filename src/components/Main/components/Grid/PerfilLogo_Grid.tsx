@@ -1,14 +1,26 @@
+import { getStreamerImage } from "@/utils/getStreamerImage";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-export function PerfilLogoGrid() {
+export function PerfilLogoGrid({ userName }: { userName: string }) {
+  const [profileImage, setProfileImage] = useState("");
+
+  useEffect(() => {
+    const run = async () => {
+      const image = await getStreamerImage(userName);
+      setProfileImage(image);
+    };
+    run();
+  });
+
   return (
-    <div className="">
+    <div className="h-11 w-11">
       <Image
-        className="flex ml-6 mr-2 mt-5 mb-2 rounded-full"
-        src="/logoGaules.jpg"
+        className="flex rounded-full"
+        src={profileImage}
         width={42}
         height={42}
-        alt="Imagem do Gaules fazendo live"
+        alt={profileImage}
       />
     </div>
   );

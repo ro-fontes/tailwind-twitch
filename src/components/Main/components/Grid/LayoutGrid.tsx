@@ -1,14 +1,27 @@
 import { Grid } from "./index";
 
-export function layoutFooterGrid() {
+interface ILayoutFooterGridProps {
+  streamTitle: string;
+  streamerName: string;
+  gameTitle: string;
+  livestreamTags: string[];
+}
+
+export function layoutFooterGrid({
+  gameTitle,
+  livestreamTags,
+  streamTitle,
+  streamerName,
+}: ILayoutFooterGridProps) {
   return (
     <>
-      <div className="flex">
-        <Grid.Perfil />
-        <div className=" flex flex-col items-start">
-          <Grid.Description description="Live Gaules" />
-          <Grid.Name name="Gaules" />
-          <Grid.Tags tags={"FIFA 23"} />
+      <div className="flex pt-3 gap-2">
+        <Grid.Perfil userName={streamerName} />
+        <div className=" flex flex-col items-start gap-1">
+          <Grid.Title text={streamTitle} />
+          <Grid.Name name={streamerName} />
+          <Grid.GameTitle text={gameTitle} />
+          <Grid.Tags tags={livestreamTags} />
         </div>
       </div>
     </>

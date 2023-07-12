@@ -14,7 +14,7 @@ export const NavButton = ({
   return (
     <a
       href={link}
-      className="flex items-center text-lg font-bold hover:text-purple-300"
+      className="flex text-zinc-50 items-center text-lg font-bold hover:text-purple-300"
     >
       {text}
       {icon}
