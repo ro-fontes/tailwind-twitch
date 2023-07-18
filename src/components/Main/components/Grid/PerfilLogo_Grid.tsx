@@ -20,7 +20,7 @@ export function PerfilLogoGrid({ userName }: { userName: string }) {
         src={profileImage}
         width={42}
         height={42}
-        alt={profileImage}
+        alt={userName}
       />
     </div>
   );

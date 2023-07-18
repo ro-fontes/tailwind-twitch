@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import SimpleBarReact from "simplebar-react";
-// import "simplebar-react/dist/simplebar.min.css";
+import "simplebar-react/dist/simplebar.min.css";
 import { HeaderComponent } from "./Header";
 import { SideNavigation } from "./SideNavigation";
 

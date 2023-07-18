@@ -36,14 +36,14 @@ export function RecommendedLiveChannel() {
   );
 
   return (
-    <div className="grid grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 gap-3">
+    <div className="flex gap-2">
       {streamers?.map((streamer) => {
         return (
           <Grid.Root key={streamer.id}>
             <Grid.Thumb
               thumbLink={streamer.thumbnail_url
                 .replace("{width}", "300")
-                .replace("{height}", "172")}
+                .replace("{height}", "170")}
               viewCount={streamer.viewer_count}
               streamerName={streamer.user_name}
             />
